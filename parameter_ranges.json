@@ -1,0 +1,634 @@
+{
+    "xi": {
+        "min": 0.0,
+        "exp": 0.05,
+        "max": 1.0001,
+        "description": "Amplitude of seasonality, including smoothing for the el nino effect",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019}",
+        "location": "Asia-Pacific region",
+        "level": "global",
+        "symbol": "$\\xi$",
+        "note": "was     \"min\" : 0.0,\n    \"exp\" : 0.21,\n    \"max\" : 1.0,"
+    },
+    "b": {
+        "min": 0.15,
+        "exp": 0.38,
+        "max": 0.5,
+        "description": "Number of mosquito bites per human per day",
+        "units": "per day",
+        "source": "\\cite{robinson_strategies_2015} for \\pv, \\cite{silal_malaria_2019} for all. 0.22 for Mondul Kiri",
+        "location": "PNG for \\pv, \\pf~and ranges from Senegal",
+        "level": "global",
+        "symbol": "$b$",
+        "note": "\\cite{chamchod_modeling_2013} has the biting rate as 245 per year, which is more like 0.67 for \\pv. \\cite{chitnis_determining_2008} have 0.47 for this for An. minimus from Bangladesh. Number of times one mosquito would want to bite humans per unit time, if humans were freely available. This is a function of the mosquito\u00e2\u20ac\u2122s gonotrophic cycle (the amount of time a mosquito requires to produce eggs) and its anthropophilic rate (its preference for human blood). NB the \\pv value was set to 0.21, but since this is in the `global` section, and the ref says the mozzies in Cambodia transmit both, I've changed it back to the \\pf value of 0.33."
+    },
+    "delta0": {
+        "min": 0.05,
+        "exp": 0.0714,
+        "max": 0.1,
+        "description": "Inverse of average life expectancy of mosquitoes",
+        "units": "per day",
+        "source": "\\cite{silal_malaria_2019, wanji_anopheles_2003, ndoen_mosquito_2012}",
+        "location": "Mount Cameroon region, Indonesia",
+        "level": "global",
+        "symbol": "$\\delta$",
+        "note": "Left at 1/14 days as An. barbirostris is common between Indonesia and Cambodia and Ndoen estimate that at a 13.21 day lifespan. Though \\cite{chamchod_modeling_2013} state a 20 day lifespan for \\pv~in SE Asia. \\cite{chitnis_determining_2008} have a lifespan by mosquito (Table A.3) and state An. minimus is 9 days (one of the three main Camobodian vectors according to \\cite{Siv_Plasmodium_2016})"
+    },
+    "mu": {
+        "min": 3.933693e-05,
+        "exp": 4.053072e-05,
+        "max": 4.680086e-05,
+        "description": "Inverse of average human life expectancy",
+        "units": "per day",
+        "source": "\\cite{department_of_economic_and_social_affairs:_statistics_division_world_2018}",
+        "location": "Cambodia",
+        "level": "global",
+        "symbol": "$\\mu$",
+        "note": "Life expectancy at birth from pg 68. F/M: 69.6/65.5 so av. 67.55 for 2018. From 2005, male life expectancy is 58.5, so that's the max death rate. Min from 2018 women."
+    },
+    "gamma": {
+        "min": [
+            0.028,
+            0.028
+        ],
+        "exp": [
+            0.1,
+            0.0833
+        ],
+        "max": [
+            0.2,
+            0.33
+        ],
+        "description": "Inverse of duration of latent period in mosquitoes (AKA the extrinsic incubation period)",
+        "units": "per day",
+        "source": "\\cite{silal_malaria_2019, gething_modelling_2011} for all, \\cite{chamchod_modeling_2013} for \\pv, all ranges from \\cite{chitnis_determining_2008}",
+        "location": "Mixture, South and South-East Asia",
+        "level": "global",
+        "symbol": "$\\gamma$",
+        "notes": "\\cite{chitnis_determining_2008} have data for the latent period in Table A.8. \\cite{gething_modelling_2011} have a temperature dependent expression for the inverse of this (Eq 5), with parameters of \\pf~and \\pv~which for 25 degrees Celcius come to be roughly 12 and 10 days, respectively."
+    },
+    "phi": {
+        "min": 1.0,
+        "exp": 300.0,
+        "max": 365.25,
+        "description": "Day of peak transmission",
+        "units": "day",
+        "source": "To be estimated",
+        "location": "",
+        "level": "global",
+        "symbol": "$\\phi$",
+        "note": "Assuming global for now, given Cambodian mosquitoes. 130 for Mondul Kiri"
+    },
+    "pTfA": {
+        "min": [
+            0.01,
+            0.01
+        ],
+        "exp": [
+            0.03,
+            0.03
+        ],
+        "max": [
+            0.1,
+            0.1
+        ],
+        "description": "Probability of standard (ACT-based) treatment failure",
+        "units": "Unitless",
+        "source": "Assumption by \\cite{silal_malaria_2019}. assuming a 3 day treatment a 3% probability is given in Okell 2008 Reduction of transmission",
+        "location": "None",
+        "level": "assumed_global",
+        "symbol": "$p_{TfA}$",
+        "note": "TODO: find a source for likely treatment failure that's not an assumption. This is $ptf$ in \\cite{silal_malaria_2019}."
+    },
+    "pTfP": {
+        "min": [
+            0.001,
+            0.001
+        ],
+        "exp": [
+            0.03,
+            0.03
+        ],
+        "max": [
+            0.1,
+            0.1
+        ],
+        "description": "Probability of radical cure (primaquine-based treatment) failure",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019}",
+        "location": "Thailand, Myanmar",
+        "level": "assumed_global",
+        "symbol": "$p_{TfP}$",
+        "note": "Just assumed its equivilant for clearing gametocytes... This is a combination of ptfp and adhp from \\cite{silal_malaria_2019}. Based on numbers from \\cite{Cheoymang_patients_2015} and \\cite{leslie_compliance_2004}, failure/noncompliance could be even lower."
+    },
+    "alpha": {
+        "min": [
+            0.016,
+            0.016
+        ],
+        "exp": [
+            0.0167,
+            0.0167
+        ],
+        "max": [
+            0.0167,
+            0.0167
+        ],
+        "description": "Inverse of average duration of infectiousness in an asymptomatic infection",
+        "units": "per day",
+        "source": "\\cite{silal_malaria_2019}",
+        "location": "Northern Ghana",
+        "level": "assumed_global",
+        "symbol": "$\\alpha$",
+        "note": "This is $r_A$ in \\cite{silal_malaria_2019}. Will need to be revised in light of \\cite{chitnis_determining_2008}, see note for $\\sigma$. TODO: identify values from the Asia region. NB: Was unable to access either reference provided by \\cite{silal_malaria_2019} for \\pv~values [60, 62]. was [0.0077, 0.0077]"
+    },
+    "omega": {
+        "min": [
+            0.0001,
+            0.0001
+        ],
+        "exp": [
+            0.00038,
+            0.00038
+        ],
+        "max": [
+            0.0167,
+            0.0167
+        ],
+        "description": "Inverse of average duration of natural immunity",
+        "units": "per day",
+        "source": "\\cite{silal_malaria_2019} all, \\cite{filipe_determination_2007} for \\pf",
+        "location": "Tanzania and The Gambia",
+        "level": "assumed_global",
+        "symbol": "$\\omega$",
+        "note": "TODO:find Asia region values (at least for \\pf). NB: \\cite{silal_malaria_2019} state \\pf~value is from \\cite{filipe_determination_2007}, but the filipe Table 1 states 180 days (0.5 year) actually states 5 year half life, differing from the silal Suppl Table 2 value of 1 year. NB: \\pv~ranges are inconsistent with \\cite{silal_malaria_2019}."
+    },
+    "pc": {
+        "min": [
+            0.8,
+            0.8
+        ],
+        "exp": [
+            0.95,
+            0.8
+        ],
+        "max": [
+            1.0,
+            1.0
+        ],
+        "description": "Proportion of non-immune expected to develop clinical malaria",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019} for all, \\cite{} for \\pv.",
+        "location": "USA, sub-Saharan Africa, Columbia",
+        "level": "assumed_global",
+        "symbol": "$p_c$",
+        "note": "TODO: find Asian region values (at least for \\pf). Based on Figures 1 and 2 from \\cite{Lindblade_silent_2013}, this should be a function of prevalence also consider cambodia values. $p_s$ in \\cite{silal_malaria_2019}."
+    },
+    "pR": {
+        "min": [
+            0.0,
+            0.0
+        ],
+        "exp": [
+            0.5,
+            0.1
+        ],
+        "max": [
+            0.77,
+            0.66
+        ],
+        "description": "Proportion immune expected to develop clinical malaria",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019} 0.1 for all, \\cite{cheng_systematic_2015, harris_large_2010} was 0.03 for \\pv. cite{Lindblade_silent_2013}, consider cambodia values",
+        "location": "\\pf~based on USA data, as analysed by \\cite{collins_retrospective_1999_b}. \\pv~based on a systematic review with many regions represented, as well as a Solomon Islands study.",
+        "level": "species_dependent_global",
+        "symbol": "$p_R$",
+        "note": "TODO: find Asian region values for \\pf. Based on Figures 1 and 2 from \\cite{Lindblade_silent_2013}, this should be a function of prevalence. Around 0.6 from experiment."
+    },
+    "r": {
+        "min": [
+            0.0,
+            0.0
+        ],
+        "exp": [
+            1.0,
+            1.0
+        ],
+        "max": [
+            1.0,
+            1.0
+        ],
+        "description": "Relative susceptibility of those with some immunity to this species compared to those without",
+        "units": "Unitless",
+        "source": "Assumed",
+        "location": "",
+        "level": "assumed_global",
+        "symbol": "$r$",
+        "note": "Values $>1$ imply increased susceptibility to infection."
+    },
+    "rho": {
+        "min": [
+            0.125,
+            0.125
+        ],
+        "exp": [
+            0.33,
+            0.33
+        ],
+        "max": [
+            0.33,
+            0.33
+        ],
+        "description": "Inverse of average time for treatment to clear gametocytes (i.e. still infectious) if treatment succeeds",
+        "units": "per day",
+        "source": "Combined $r_T$ and $r_Q$ from \\cite{silal_malaria_2019}",
+        "location": "",
+        "level": "assumed_global",
+        "symbol": "$\\rho$",
+        "note": "NB: Table 1 states median time to parasite clearance is \\leq 2 days, but \\cite{silal_malaria_2019} states 3--7 days for r_T). TODO: Find more up to date values. 3 day course is common."
+    },
+    "epsilonM": {
+        "min": [
+            0.01,
+            0.01
+        ],
+        "exp": [
+            0.5,
+            0.3
+        ],
+        "max": [
+            0.5,
+            0.4
+        ],
+        "description": "Transmission probability: mosquito to human",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019, smith_quantitative_2010} for all, \\cite{robinson_strategies_2015, bharti_experimental_2006} for \\pv",
+        "location": "African continent, Peruvian Amazon",
+        "level": "species_dependent_local",
+        "symbol": "$\\epsilon_M$",
+        "note": "\\[0.55, 0.28] b=0.18 cite{chitnis_determining_2008} has these at an order of magnitude lower (Table A.5), so I've reduce the min and changed what were the min values to be the lower CIs. \\cite{silal_malaria_2019} \\pv~value = \\cite{robinson_strategies_2015} value = \\cite{bharti_experimental_2006} value from Peruvian Amazon. TODO: estimate this from local data.[0.085, 0.068]"
+    },
+    "epsilonH": {
+        "min": [
+            0.07,
+            0.07
+        ],
+        "exp": [
+            0.1,
+            0.1
+        ],
+        "max": [
+            0.64,
+            0.64
+        ],
+        "description": "Transmission probability: human to mosquito",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019} for all was 0.5, \\ ... 0.23 cite{robinson_strategies_2015} for \\pv .. thailand 56.9% from Sattabongkot 2003, ranges from \\cite{chitnis_determining_2008} for \\pf was [0.5, 0.23] [0.5, 0.57],",
+        "location": "?, PNG",
+        "level": "species_dependent_global",
+        "symbol": "$\\epsilon_H$",
+        "note": "\\cite{chitnis_determining_2008} has these aroundish 0.5 [0.0072--0.64] for \\pf~(Table A.6)."
+    },
+    "kappa": {
+        "min": 0.002,
+        "exp": 0.0025,
+        "max": 0.003,
+        "description": "Inverse of average time until hypnozoites die",
+        "units": "per day",
+        "source": "\\cite{silal_malaria_2019, white_modelling_2014}, 1/500 day limit from \\cite{robinson_strategies_2015}",
+        "location": "South East Asia",
+        "level": "species_dependent_global",
+        "symbol": "$\\kappa_v$",
+        "note": "The limits seem to be based on primate \\cite{chamchod_modeling_2013, cogswell_hypnozoite_1992} and mouse \\cite{robinson_strategies_2015, malato_fate_2011} models. But \\cite{white_modelling_2014} are an estimate from human south east asian \\pv~strains."
+    },
+    "pA": {
+        "min": 0.5,
+        "exp": 0.68,
+        "max": 0.8,
+        "description": "Probability of recovering with hypnozoites from standard (non-radical) treatment",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019, chamchod_modeling_2013} actually Alejandro Llanos-Cuentas 2014 tafenoquine ",
+        "location": "Global",
+        "level": "species_dependent_global",
+        "symbol": "$p_{A,v}$",
+        "note": "This is ph in \\cite{silal_malaria_2019}."
+    },
+    "ph": {
+        "min": 0.2,
+        "exp": 0.5,
+        "max": 0.8,
+        "description": "Probability of naturally recovering with hypnozoites",
+        "units": "Unitless",
+        "source": "Assuming 2-6 hypnozoites",
+        "location": "",
+        "level": "species_dependent_global",
+        "symbol": "$p_{h,v}$",
+        "note": "TODO: rename this parameter, since this is the notation used by \\cite{silal_malaria_2019} for what I've named $p_A$"
+    },
+    "pL": {
+        "min": 0.0,
+        "exp": 0.1,
+        "max": 0.66,
+        "description": "Proportion of relapses resulting in clinical malaria",
+        "units": "Unitless",
+        "source": "",
+        "location": "",
+        "level": "species_dependent_global",
+        "symbol": "$p_{L,v}$",
+        "note": "Assuming $p_L=p_R$ Anne C. G. Almeida 2018 reckons 53% (so pL is at most 48%) of carriers were asymptomatic (no way of knowing primary infection).. this is a parameter worth fitting to that value"
+    },
+    "pP": {
+        "min": 0.0,
+        "exp": 0.217,
+        "max": 0.43,
+        "description": "Probability of recovering with hypnozoites after radical cure (primaquine-based treatment)",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019, baird_primaquine_2004, Alejandro Llanos-Cuentas tafenoquine}",
+        "location": "Mixed, global",
+        "level": "species_dependent_global",
+        "symbol": "$p_{P,v}$",
+        "note": "This should depend on the duration of treatment, which is $r_P$ in \\cite{silal_malaria_2019}. This is ``phprim'' in \\cite{silal_malaria_2019}."
+    },
+    "psi": {
+        "min": [
+            0.07,
+            0.07
+        ],
+        "exp": [
+            0.142,
+            0.142
+        ],
+        "max": [
+            0.5,
+            0.5
+        ],
+        "description": "Inverse of average duration infectious after treatment that includes radical cure (e.g. primaquine) has begun",
+        "units": "per day",
+        "source": "\\cite{silal_malaria_2019}",
+        "location": "",
+        "level": "species_dependent_global",
+        "symbol": "$\\psi$",
+        "note": "This is NOT $r_P$ in \\cite{silal_malaria_2019}. Standard treatment is for 14 days, TODO find reference for average infectiousness after this though. Primaquine is about preventing relapse, so this is really dependent on which drug is used as the simultaneous schizonticidal therapy -- $r_P$ affects my $p_P$."
+    },
+    "sigma": {
+        "min": [
+            0.01,
+            0.01
+        ],
+        "exp": [
+            0.07143,
+            0.05
+        ],
+        "max": [
+            0.2,
+            0.5
+        ],
+        "description": "Inverse of average duration of symptoms in untreated clinical malaria",
+        "units": "per day",
+        "source": "\\cite{silal_malaria_2019} for all, \\cite{collins_retrospective_1999} for \\pf, \\cite{yount_status_1949} for \\pv.",
+        "location": "\\pf~from Africa/West Africa and USA data",
+        "level": "species_dependent_global",
+        "symbol": "$\\sigma$",
+        "note": "This is $r_c$ in \\cite{silal_malaria_2019}. Need to be revised in light of \\cite{chitnis_determining_2008} -- though see \\cite{collins_retrospective_1999} Figure 2C, where gametocytemia 'only' for $\\approx$100 days. \\cite{collins_retrospective_1999} demonstrated that \\pf~has 14--100 days of fever when untreated, in those immunologically naive also: 'instances of parasite counts \\geq 1O,000/$\\mu$L occurred $>$75 days after infection.' Need to decide what this is really for. If higher level of tx, should arguably be 1/75, based on \\cite{collins_retrospective_1999} data. If for fever, should be somewhere between 1/10 and 1/14. No guarantee the \\cite{collins_retrospective_1999} data is related to strains seen in Asia though. TODO: identify values from the Asia region."
+    },
+    "zetaA": {
+        "min": [
+            0.0,
+            0.0
+        ],
+        "exp": [
+            0.1,
+            0.1
+        ],
+        "max": [
+            0.8,
+            0.8
+        ],
+        "description": "Relative infectiousness of asymptomatic cases compared to clinical",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019} for all, \\cite{lindblade_silent_2013} for \\pf, \\cite{vallejo_plasmodium_2016} for \\pv.. actually for Pv take 72/94 as relative rate of gametocytes in asymptomatics from Bharti 2007 actually did calculation from Thai study where zetaA=4.5% and 2.9% (scale according to epsilon)",
+        "location": "Mixed, \\pf~values from a review with studies from Africa, South America, and Asia. \\pv~values from human challenge study in Columbia.",
+        "level": "species_dependent_global",
+        "symbol": "$\\zeta_A$",
+        "note": "\\pf~apparently based on \\cite{lindblade_silent_2013} though I don't see the specific figures there. TODO: Not sure how to take into account the infection intensity from \\cite{vallejo_plasmodium_2016}."
+    },
+    "zetaG": {
+        "min": [
+            0.0,
+            0.0
+        ],
+        "exp": [
+            0.036,
+            0.036
+        ],
+        "max": [
+            0.1,
+            0.1
+        ],
+        "description": "Relative infectiousness of cases undergoing radical cure (primaquine-based treatment) compared to clinical",
+        "units": "Unitless",
+        "source": "Assumed",
+        "location": "",
+        "level": "species_dependent_global",
+        "symbol": "$\\zeta_G$"
+    },
+    "zetaI": {
+        "min": [
+            0.0,
+            0.0
+        ],
+        "exp": [
+            1.0,
+            1.0
+        ],
+        "max": [
+            1.0,
+            1.0
+        ],
+        "description": "Relative infectiousness of clinical cases compared to clinical with a \\pf-only",
+        "units": "Unitless",
+        "source": "Assumed",
+        "location": "",
+        "level": "species_dependent_global",
+        "symbol": "$\\zeta_I$"
+    },
+    "zetaT": {
+        "min": [
+            0.01,
+            0.01
+        ],
+        "exp": [
+            0.16,
+            0.16
+        ],
+        "max": [
+            0.33,
+            0.33
+        ],
+        "description": "Relative infectiousness of cases undergoing standard treatment compared to clinical cases with no treatment",
+        "units": "Unitless",
+        "source": "Assumed",
+        "location": "",
+        "level": "global",
+        "symbol": "$\\zeta_T$"
+    },
+    "c": {
+        "min": [
+            0.0,
+            0.0
+        ],
+        "exp": [
+            0.3,
+            0.3
+        ],
+        "max": [
+            1.0,
+            1.0
+        ],
+        "description": "treatment coverage level",
+        "units": "Unitless",
+        "source": "Assumption",
+        "location": "",
+        "level": "species_dependent_local",
+        "symbol": "$c$",
+        "note": "This is number of tests conducted * proportion that came back positive, by species. This is currently $\\tau_{SEV}\\times p_{SEV}=0.024(0.0, 0.25)$ from \\cite{silal_malaria_2019}."
+    },
+    "eta": {
+        "min": [
+            0.0,
+            0.0
+        ],
+        "exp": [
+            0.0,
+            0.0
+        ],
+        "max": [
+            0.0,
+            0.0
+        ],
+        "description": "Inverse of average time until treatment when asymptomatic",
+        "units": "per day",
+        "source": "MDA frequency",
+        "location": "",
+        "level": "species_dependent_local",
+        "symbol": "$\\eta$",
+        "note": "Assuming MDAs are directed at \\pf or \\pv."
+    },
+    "nu": {
+        "min": 0.00667,
+        "exp": 0.022,
+        "max": 0.04762,
+        "description": "Inverse of average time to relapse",
+        "units": "per day",
+        "source": "\\cite{silal_malaria_2019, battle_geographical_2014, robinson_strategies_2015, chu_management_2016}",
+        "location": "South East Asia and Melanesia",
+        "level": "species_dependent_local",
+        "symbol": "$\\nu$",
+        "note": "150 day limit of \\cite{silal_malaria_2019} from \\cite{chamchod_modeling_2013}, which is in turn from craig_molecular_1996. Expected value from \\cite{silal_malaria_2019} of 1/45 days is the same as that in battle_geographical_2014, found via \\cite{robinson_strategies_2015}. NB \\cite{White_modelling_2014} estimate 1/76 days. Lower limit of ~3 weeks and expected times also line up with the statement by \\cite{chu_management_2016}."
+    },
+    "pI": {
+        "min": [
+            0.02,
+            0.0015
+        ],
+        "exp": [
+            0.021,
+            0.001
+        ],
+        "max": [
+            0.2,
+            0.006
+        ],
+        "description": "Probability of untreated clinical malaria resulting in death",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019, lubell_likely_2011} for both, \\cite{rahimi_severe_2014} for \\pv.",
+        "location": "Africa and Asia",
+        "level": "species_dependent_local",
+        "symbol": "$p_I$",
+        "note": "This is a combination of Prop'n severe ($p_{sev}$) $\\times$ probability untreated severe malaria results in death ($\\theta_1$) in \\cite{silal_malaria_2019} Suppl Table 2. NB theta_1 for \\pv~falls somewhere between the values given by \\cite{lubell_likely_2011} and \\cite{rahimi_severe_2014}."
+    },
+    "pN": {
+        "min": [
+            1.0,
+            1.0
+        ],
+        "exp": [
+            1.0,
+            0.843
+        ],
+        "max": [
+            1.0,
+            1.0
+        ],
+        "description": "Probability get non-radical-cure based treatment (i.e. get ACT-based treatment)",
+        "units": "Unitless",
+        "source": "Combined parameters from \\cite{silal_malaria_2019}: ``mask'', ``pgd'', ``psens''",
+        "location": "",
+        "level": "species_dependent_local",
+        "symbol": "$p_{N,x}$",
+        "note": "Assuming $p_{N,fL}=p_{N,f}$ and that $p_{N,fv}\\approx$ the known prevalence of G6PDd locally (i.e. <0.3 so can't have primaquine)."
+    },
+    "pT": {
+        "min": [
+            0.0045,
+            1e-06
+        ],
+        "exp": [
+            0.0066,
+            6e-06
+        ],
+        "max": [
+            0.075,
+            0.001
+        ],
+        "description": "Probability of standard (ACT-based) treated malaria resulting in death",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019}",
+        "location": "",
+        "level": "species_dependent_local",
+        "symbol": "$p_T$",
+        "note": " was   \"min\" : [0.0045, 0.0001],\n    \"exp\" : [0.011, 0.0006],\n    \"max\" : [0.075, 0.175], This is a combination of $\\theta_2\\times p_{sev}$ in \\cite{silal_malaria_2019} Suppl Table 2=0.0066 for \\pf. TODO: if this is how I came to this value, double check references 47-49 for \\pf~and 66-68 for \\pv."
+    },
+    "pG": {
+        "min": [
+            0.0045,
+            1e-06
+        ],
+        "exp": [
+            0.0066,
+            6e-06
+        ],
+        "max": [
+            0.075,
+            0.001
+        ],
+        "description": "Probability of radical cure (primaquine-based) treated malaria resulting in death",
+        "units": "Unitless",
+        "source": "\\cite{silal_malaria_2019}",
+        "location": "",
+        "level": "species_dependent_local",
+        "symbol": "$p_G$",
+        "note": " was \"exp\" :[0.011, 0.0025]"
+    },
+    "tau": {
+        "min": [
+            0.0,
+            0.0
+        ],
+        "exp": [
+            0.5,
+            0.5
+        ],
+        "max": [
+            1.0,
+            1.0
+        ],
+        "description": "Inverse of average time until treatment of clinical malaria (including severe)",
+        "units": "per day",
+        "source": "Assumed",
+        "location": "",
+        "level": "species_dependent_local",
+        "symbol": "$\\tau$"
+    }
+}
