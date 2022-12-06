@@ -1,14 +1,13 @@
+# multispecies-malaria-model
+Code to support the manuscript titled "A model for malaria treatment evaluation
+in the presence of multiple species".
+
 # Code authorship
 Major initial model development and implementation were contributed by Roslyn Hickson.
 
 The scenario modelling, incorporation of mass drug administration, focal screen and treat, and some interactions were contributed by Camelia Walker. 
 
 The sensetivity analysis and the incorporation of some interactions were contributed by Edmond Chang.
-
-
-# multispecies-malaria-model
-Code to support the manuscript titled "A model for malaria treatment evaluation
-in the presence of multiple species".
 
 # Usage
 To run the model, put all files in this repository (including **stored/**) in
