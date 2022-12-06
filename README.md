@@ -20,7 +20,7 @@ over treatment scenario and coverage scenario combinations. Treatment scenarios
 in pN_vec; coverage scenarios in c_vec.
 
 Values between lines 41-55 can be changed by the user. prov_list_epidemics
-specifies which locations in **sorted_calibrated_params2.json** that a
+specifies which locations in **local_params.json** that a
 simulation will be run for.
 
 ### H_abm_Mcomixing.py
@@ -31,8 +31,8 @@ counters and quantities of interest. Output files generated here.
 run_me in Run_Simulations calls other functions in Run_Simulations to run a
 single simulation.  
 use_calibrated_params updates parameters defined in
-**sorted_calibrated_params2.json**. That is, parameter values in
-**sorted_calibrated_params2.json** override parameter values defined in
+**local_params.json**. That is, parameter values in
+**local_params.json** override parameter values defined in
 **parameter_ranges.json**.  
 do_iterate implements the running of multiple iterations. Includes switch for
 parallelisation. Stores the outputs from the multiple iterations and generates
@@ -69,7 +69,7 @@ Implementation of ODE model for mosquitos.
 Defines default values of parameters. Also includes additional information such as
 parameter value ranges, parameter description, and source of value.
 
-### stored/sorted_calibrated_params2.json
+### stored/local_params.json
 Defines location specific values of certain parameters. Any parameter values set
-in **sorted_calibrated_params2.json** will override default parameter value
+in **local_params.json** will override default parameter value
 defined in **parameter_ranges.py**.
