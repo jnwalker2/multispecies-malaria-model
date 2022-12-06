@@ -7,7 +7,7 @@ Major initial model development and implementation were contributed by Roslyn Hi
 
 The sensetivity analysis, incorporation of some interactions and general edits throughout were contributed by Edmond Chang.
 
-Preparation of code for scenario modelling, incorporation of population treatment strategies (such as mass drug administration), and some interactions were contributed by Camelia Walker. 
+Preparation of code for scenario modelling, incorporation of population treatment strategies (such as mass drug administration) and some interactions were contributed by Camelia Walker. 
 
 # Usage
 To run the model, put all files in this repository (including **stored/**) in
