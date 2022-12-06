@@ -28,7 +28,7 @@ it_dict["zf"] = 3.5
 import gc
 
 ########################### for user to change #################################
-prov_list_epidemics = ['Example_Province'] # names need to exist in sorted_calibrated_params2.json
+prov_list_epidemics = ['Example_Province'] # names need to exist in local_params.json
 
 p_mask = 0.50
 mda1 = [270.0]  # lower bound of when MDA occurs

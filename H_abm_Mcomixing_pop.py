@@ -530,8 +530,8 @@ def use_calibrated_params(prov):
 
     params = dict()
 
-    # update the default parameter values using parameter values stored in `./sorted_calibrated_params.json`, after `parameter-play.py` processes the values in `./stored/model_calibration_params.json`, which were generated from `calibrated_to_cambodia_data.py`,
-    with open('./stored/sorted_calibrated_params2.json') as json_file:
+    # update the default parameter values using parameter values stored in `./local_params.json`, after `parameter-play.py` processes the values in `./stored/model_calibration_params.json`, which were generated from `calibrated_to_cambodia_data.py`,
+    with open('stored/local_params.json') as json_file:
         json_data = json.load(json_file)
 
     for keys in json_data[prov]:
