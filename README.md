@@ -5,9 +5,9 @@ in the presence of multiple species".
 # Code authorship
 Major initial model development and implementation were contributed by Roslyn Hickson.
 
-The scenario modelling, incorporation of mass drug administration, focal screen and treat, and some interactions were contributed by Camelia Walker. 
+Preparation of code for scenario modelling, incorporation of population treatment strategies (such as mass drug administration), and some interactions were contributed by Camelia Walker. 
 
-The sensetivity analysis and the incorporation of some interactions were contributed by Edmond Chang.
+The sensetivity analysis, incorporation of some interactions and general edits throughout were contributed by Edmond Chang.
 
 # Usage
 To run the model, put all files in this repository (including **stored/**) in
